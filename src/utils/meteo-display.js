@@ -3,13 +3,16 @@ const display = ({
   latitude,
   longitude,
   summary,
+  temperatureMax,
+  temperatureMin,
   temperature,
   precipProbability
+  
 }) => {
   return {
     lieuText: lieu({ place_name }),
     coordonneesText: coordonnees({ latitude, longitude }),
-    previsionText: prevision({ summary, temperature, precipProbability })
+    previsionText: prevision({ summary, temperatureMax, temperatureMin, temperature, precipProbability })
   };
 };
 
@@ -28,7 +31,7 @@ const coordonnees = ({ latitude, longitude } = {}) => {
   return displayMessage;
 };
 
-const prevision = ({ summary, temperature, precipProbability } = {}) => {
+const prevision = ({ summary, temperatureMax, temperatureMin, temperature, precipProbability } = {}) => {
   let displayMessage =
     "Aujourd'hui, " +
     summary +
@@ -36,7 +39,9 @@ const prevision = ({ summary, temperature, precipProbability } = {}) => {
     temperature +
     '°C dehors. Il y a ' +
     precipProbability +
-    '% de chance de pleuvoir.';
+    '% de chance de pleuvoir.' +
+    ' La maximale sera : ' + temperatureMax + '°C.' +
+    ' La minimale sera : ' + temperatureMin + '°C.';
   return displayMessage;
 };
 

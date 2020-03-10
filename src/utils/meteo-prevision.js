@@ -25,6 +25,8 @@ const getPrevision = (error, {latitude, longitude} = {}, callback) => {
       const {currently, daily} = body;
       prevision = {
         summary: daily.data[0].summary,
+        temperatureMax: daily.data[0].temperatureMax,
+        temperatureMin: daily.data[0].temperatureMin,
         temperature: currently.temperature,
         precipProbability: currently.precipProbability
       };
